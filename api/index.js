@@ -1,10 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
-
+import dotenv from 'dotenv';
 const app = express();
+dotenv.config();
 mongoose
-.connect("mongodb+srv://aakarshit:aakarshit@cluster0.zwhridn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-.then(console.log("data  base connected"));
+    .connect(process.env.MONGO)
+    .then(()=> {console.log("data  base connected");
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 let port = '3001';
 
  
